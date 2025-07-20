@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armah Hotel - Menu</title>
+    <!-- Assuming style.css is in public/css/ relative to this HTML file -->
+    <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1>Armah Hotel</h1>
+            <p>Welcome to Table <strong id="tableNumberDisplay">Loading...</strong></p>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="menuSearchInput" placeholder="Search for food or drinks..." class="form-input">
+        </div>
+        <!-- End of Search Bar -->
+
+        <main id="menuItemsContainer">
+            <h2>Main Dishes</h2>
+            
+            <div class="card menu-item" data-name="Doro Wat" data-name-tg="ዶሮ ወጥ" data-price="18.99">
+                <img src="dorowet.webp" alt="Doro Wat" class="menu-item-image">
+                <div class="menu-item-details">
+                    <h3>Doro Wat / ዶሮ ወጥ <span class="price">$18.99</span></h3>
+                    <p>A rich and spicy chicken stew, slow-cooked with berbere sauce and served with a hard-boiled egg.</p>
+                    <button class="btn add-to-cart-btn">Add to Order</button>
+                </div>
+            </div>
+        
+            <div class="card menu-item" data-name="Veggie Combo" data-name-tg="ናይ ኣሕምልቲ በያይነቱ" data-price="17.50">
+                <img src="Veggie.jpeg" alt="Veggie Combo" class="menu-item-image">
+                <div class="menu-item-details">
+                    <h3>Veggie Combo / ናይ ኣሕምልቲ በያይነቱ <span class="price">$17.50</span></h3>
+                    <p>A beautiful platter of various vegetable stews like lentils, chickpeas, and cabbage.</p>
+                    <button class="btn add-to-cart-btn">Add to Order</button>
+                </div>
+            </div>
+        
+            <div class="card menu-item" data-name="Kitfo (Special)" data-name-tg="ክትፎ" data-price="20.50">
+                <img src="Kitfo.jpeg" alt="Kitfo" class="menu-item-image">
+                <div class="menu-item-details">
+                    <h3>Kitfo / ክትፎ <span class="price">$20.50</span></h3>
+                    <p>Minced raw beef, marinated in mitmita (a spicy chili powder) and niter kibbeh (herbed butter).</p>
+                    <button class="btn add-to-cart-btn">Add to Order</button>
+                </div>
+            </div>
+            
+            <h2>Drinks</h2>
+            <div class="card menu-item" data-name="St. George Beer" data-name-tg="ቅዱስ ጊዮርጊስ ቢራ" data-price="5.00">
+                <img src="download (2).jpeg" alt="Beer" class="menu-item-image">
+                <div class="menu-item-details">
+                    <h3>St. George Beer / ቅዱስ ጊዮርጊስ ቢራ <span class="price">$5.00</span></h3>
+                    <p>A classic Ethiopian lager, crisp and refreshing.</p>
+                    <button class="btn add-to-cart-btn">Add to Order</button>
+                </div>
+            </div>
+        </main><!-- End of menuItemsContainer -->
+
+        <!-- The Cart Section -->
+        <div class="card cart-section">
+            <h2>Your Order</h2>
+            <div id="cartItems"></div>
+            <hr>
+            <p><strong>Total: <span id="cartTotal">$0.00</span></strong></p>
+            <hr>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="tableCode">Table Code:</label>
+                    <input type="password" id="tableCode" placeholder="Code from table" class="form-input">
+                </div>
+                <button type="submit" class="btn btn-full-width">Place Order</button>
+            </form>
+        </div> <!-- This closes the cart card -->
+
+        <!-- Accordion Section -->
+        <div class="accordion-section">
+            <div class="accordion-item">
+                <div class="accordion-header" id="callWaiterHeader">Call Waiter for Assistance</div>
+                <!-- Content handled by JavaScript confirmation -->
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">Show Wi-Fi Password</div>
+                <div class="accordion-content">
+                    <p><strong>Network:</strong> Armah Hotel Free Wi-Fi</p>
+                    <p><strong>Password:</strong> EatDrinkEnjoy</p>
+                </div>
+            </div>
+        </div>
+        <!-- End of Accordion Section -->
+    </div>
+
+    <!-- Link to our JavaScript file -->
+    <script src="menu-client.js"></script>
+</body>
+</html>
