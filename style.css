@@ -1,0 +1,384 @@
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+/* --- Universal Box-Sizing (BEST PRACTICE) --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* --- Color & Font Definitions (Our Brand) --- */
+:root {
+    --primary-color: #0c3b2e; /* Dark Green */
+    --secondary-color: #ffba08; /* Gold/Yellow */
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+    --border-color: #ddd;
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'Poppins', sans-serif;
+
+    /* Specific colors for dashboard/admin */
+    --dashboard-bg: #e9ecef;
+    --info-blue: #17a2b8;
+    --danger-red: #dc3545;
+    --success-green: #28a745;
+    --muted-grey: #6c757d;
+    --light-red-bg: #fff0f1;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--light-bg); /* Default light background */
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* --- Reusable Components --- */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.btn {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #e0a407; /* Slightly darker gold on hover */
+}
+
+.card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+}
+
+
+/* --- HTML Header Styles (Applied to menu.html) --- */
+.page-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* --- Search Bar Styles (Applied to menu.html) --- */
+.search-container {
+    margin-bottom: 40px;
+}
+
+#menuSearchInput {
+    width: 100%; /* Changed from 95% to 100% for consistency */
+    padding: 15px;
+    font-size: 1.1em;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+/* --- Menu Item Specific Styles --- */
+.menu-item {
+    display: flex; /* Use flexbox for better layout */
+    gap: 20px;     /* Add some space between the image and the text */
+    align-items: center; /* Vertically align items in the middle */
+}
+
+.menu-item-image {
+    width: 120px;      /* Fixed width for the image */
+    height: 120px;     /* Fixed height for the image */
+    object-fit: cover; /* This is key: it scales the image to fill the box without stretching it */
+    border-radius: 8px; /* Rounded corners for the image */
+    flex-shrink: 0;    /* Prevents the image from shrinking if the text is long */
+}
+
+.menu-item-details {
+    flex-grow: 1; /* Allows the text content to take up the remaining space */
+}
+
+.menu-item-details h3 {
+    margin-top: 0;
+    margin-bottom: 5px; /* Added for better spacing */
+}
+
+.menu-item-details h3 .price { /* Targeted span for price */
+    color: var(--primary-color);
+}
+
+.menu-item-details p {
+    margin-bottom: 15px;
+    font-size: 0.9em; /* Slightly smaller for descriptions */
+}
+
+/* --- Cart Section Specific Styles (Applied to menu.html) --- */
+.cart-section {
+    margin-top: 40px;
+    border-top: 4px solid var(--primary-color);
+}
+
+.cart-section hr {
+    margin: 15px 0; /* Adjust HR margin within cart */
+}
+
+/* --- Form Styles (Applied to menu.html and Admin.html) --- */
+.form-group {
+    margin-bottom: 15px; /* For labels and inputs */
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.btn-full-width {
+    width: 100%;
+}
+
+/* --- Accordion Specific Styles (Applied to menu.html) --- */
+.accordion-section {
+    margin-top: 20px;
+}
+
+.accordion-item {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden; /* This is important for the collapse animation */
+}
+
+.accordion-header {
+    background-color: #fff;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: var(--primary-color); /* Added color for header text */
+}
+
+.accordion-header:hover {
+    background-color: var(--light-bg);
+}
+
+.accordion-header::after {
+    content: '▼'; /* Downward-pointing arrow */
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active::after {
+    transform: rotate(180deg); /* Flip the arrow when active */
+}
+
+.accordion-content {
+    padding: 0 20px; /* Start with no vertical padding */
+    max-height: 0;   /* This is the key to the collapse effect */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* Smooth transition */
+}
+
+.accordion-header.active + .accordion-content {
+    padding-bottom: 15px; /* Add bottom padding when active (CSS driven) */
+}
+
+.accordion-content p {
+    margin: 0;
+    padding: 15px 0; /* Keep inner padding for content paragraphs */
+}
+
+
+/* --- DASHBOARD Specific Styles (Applied to dashboard.html) --- */
+.dashboard-body {
+    background-color: var(--dashboard-bg);
+}
+
+.dashboard-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.dashboard-header h1 {
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.dashboard-orders-container {
+    max-width: 1200px;
+    margin: 40px auto; /* Centering and top/bottom margin */
+    padding: 20px; /* Padding for the container itself */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.order-card {
+    flex: 1 1 calc(33.333% - 13.333px); /* For 3 items per row with 20px gap */
+    min-width: 280px; /* Ensures cards don't get too small */
+    border-left: 5px solid var(--border-color); /* Default border color */
+}
+
+.order-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.order-card h2 .status-tag {
+    font-size: 0.7em;
+    color: var(--muted-grey);
+}
+
+.order-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+.order-card li {
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+/* Specific order card states */
+.order-card.new-order {
+    border-left-color: var(--secondary-color); /* Gold for new orders */
+}
+.order-card.acknowledged-order {
+    border-left-color: var(--primary-color); /* Green for acknowledged */
+}
+.order-card.completed-order {
+    border-left-color: var(--success-green); /* Darker green for completed */
+    opacity: 0.8; /* Dim slightly */
+}
+
+/* Help request card specific styles */
+.order-card.help-request {
+    border-left-color: var(--danger-red); /* Red for help requests */
+    background-color: var(--light-red-bg); /* Light red background */
+}
+.help-request-table-number {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Dashboard button styles */
+.btn-acknowledge {
+    background-color: var(--secondary-color);
+}
+.btn-resolve {
+    background-color: var(--success-green); /* Green for resolve */
+    color: white; /* Ensure text is white for better contrast */
+}
+.btn-complete {
+    background-color: var(--muted-grey); /* Grey for complete */
+    color: white; /* Ensure text is white for better contrast */
+}
+
+
+/* --- ADMIN PANEL Specific Styles (Applied to Admin.html) --- */
+.admin-body {
+    background-color: var(--dashboard-bg); /* Reusing dashboard background */
+}
+
+.admin-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.admin-header h1 {
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.admin-panel-container { /* Specific container for admin panel */
+    max-width: 600px; /* Smaller container for login/editor */
+}
+
+/* Admin login form specific inputs */
+.login-form .form-input {
+    margin-bottom: 15px; /* Spacing for login inputs */
+}
+
+/* Menu Editor specific buttons */
+.menu-editor-actions {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-bottom: 15px; /* Space before HR */
+}
+.menu-editor-actions .btn {
+    flex-grow: 1; /* Make buttons expand */
+}
+
+.btn-edit {
+    background-color: var(--info-blue); /* Info blue for edit */
+    color: white; /* Ensure text is white */
+}
+.btn-delete {
+    background-color: var(--danger-red); /* Danger red for delete */
+    color: white; /* Ensure text is white */
+}
+.btn-add-new-item {
+    background-color: var(--primary-color); /* Primary color for add */
+    color: white; /* Ensure text is white */
+}
+
+.section-divider {
+    margin: 20px 0; /* HR spacing */
+}
+
+/* --- Basic Responsiveness --- */
+@media (max-width: 768px) {
+    .container,
+    .dashboard-orders-container,
+    .admin-panel-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .menu-item {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center;
+    }
+    .menu-item-image {
+        width: 100%; /* Make image full width in small screens */
+        height: auto; /* Allow height to adjust */
+        max-width: 150px; /* Constrain max width for images */
+        margin-bottom: 10px;
+    }
+
+    .order-card {
+        flex: 1 1 100%; /* Each card takes full width on small screens */
+    }
+
+    .menu-editor-actions {
+        flex-direction: column; /* Stack edit/delete buttons */
+    }
+}
